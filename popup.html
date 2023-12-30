@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +9,18 @@
 </head>
 <body>
   <div class="container">
-    <h2>AI Tracker</h2>
+    <div class="navbar">
+      <h2>AI Tracker</h2>
+      <button id="historyBtn">View History</button>
+    </div>
     <div class="cards">
       <div class="card">
-        <p>Total AI-generated content tracked today: <span id="aiContentCount">0</span></p>
-      </div>
-      <div class="card">
-        <p>Fake content tracked today: <span id="fakeContentCount">0</span></p>
+        <p>Screenshots captured: <span id="totalScreenshotsCount">0</span></p>
       </div>
     </div>
     <button id="startBtn">Start Tracking</button>
+    <div id="historyContainer" style="display: none;"></div>
+    <button id="backBtn" style="display: none;">Back</button>
   </div>
   <script src="popup.js"></script>
 </body>

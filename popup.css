@@ -1,54 +1,110 @@
+/* popup.css */
 body {
-    width: 350px;
-    height: 250px;
-    margin: 20px;
-    padding: 10px;
-    background-color: #f2f2f2; /* Light gray background */
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .container {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .cards {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .card {
-    flex: 1;
-    padding: 15px;
-    background-color: #ffffff; /* White background for cards */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
-  }
-  
-  h2 {
-    color: #4b0082; /* Indigo color for heading */
-  }
-  
-  #aiContentCount,
-  #fakeContentCount {
-    color: #008000; /* Light green color for content count */
-  }
-  
-  #startBtn {
-    background-color: #008000; /* Light green color for the button */
-    color: #ffffff; /* White color for the button text */
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  #startBtn:hover {
-    background-color: #006400; /* Darker green on hover */
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #47143D;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 300px;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 0;
+}
+
+button {
+  background-color: #B99750;
+  color: #47143D;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #FFFFFF;
+  color: #47143D;
+}
+
+.cards {
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: #B99750;
+  color: #47143D;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#startBtn {
+  background-color: #B99750;
+  color: #47143D;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#startBtn:hover {
+  background-color: #FFFFFF;
+  color: #47143D;
+}
+
+#historyContainer {
+  display: none;
+}
+
+.screenshot-card {
+  margin-bottom: 10px;
+  border: 1px solid #B99750;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.screenshot-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #B99750;
+  color: #47143D;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #FFFFFF;
+  color: #47143D;
+}
+
+#backBtn {
+  background-color: #B99750;
+  color: #47143D;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+#backBtn:hover {
+  background-color: #FFFFFF;
+  color: #47143D;
+}
