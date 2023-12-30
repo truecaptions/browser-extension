@@ -84,13 +84,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    const link = document.createElement('a');
-    link.href = `dynamic_page.html?index=${index}`;
-    link.target = '_blank'; // Open in a new tab
-    link.textContent = 'Open';
-
-    // Append the link to the card
-    card.appendChild(link);
 
 
     // Create a delete button
@@ -111,8 +104,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Append the image and delete button to the card
     card.appendChild(img);
-    card.appendChild(deleteBtn);
     card.appendChild(openBtn);
+    card.appendChild(deleteBtn);
 
     // Append the card to the history container
     historyContainer.appendChild(card);
@@ -133,30 +126,49 @@ document.addEventListener('DOMContentLoaded', function () {
       const capturedScreenshots = result.capturedScreenshots || [];
       const screenshotUrl = capturedScreenshots[index];
 
-      // Create a dynamic page container
-      const dynamicPageContainer = document.createElement('div');
-      dynamicPageContainer.className = 'dynamic-page-container';
+      // Create a modal container
+      const modalContainer = document.createElement('div');
+      modalContainer.className = 'modal-container';
+
+      
+      // Create a title for the modal
+      const title = document.createElement('h3');
+      title.textContent = 'Truecaptions Analyzer';
 
       // Create an image element for the screenshot
       const img = document.createElement('img');
       img.src = screenshotUrl;
 
-      // Create a button to go back
-      const backBtn = document.createElement('button');
-      backBtn.textContent = 'Back';
-      backBtn.addEventListener('click', function () {
-        // Remove the dynamic page container
-        dynamicPageContainer.remove();
+      // Create an "Analyze" button
+      const analyzeBtn = document.createElement('button');
+      analyzeBtn.textContent = 'Analyze';
+      analyzeBtn.className = 'analyze-btn';
+      analyzeBtn.addEventListener('click', function () {
+        // Implement your analyze logic here
+        alert('Analyzing...');
       });
 
-      // Append the image and back button to the dynamic page container
-      dynamicPageContainer.appendChild(img);
-      dynamicPageContainer.appendChild(backBtn);
+      // Create a "Back" button
+      const backBtn = document.createElement('button');
+      backBtn.textContent = 'Back';
+      backBtn.className = 'back-btn';
+      backBtn.addEventListener('click', function () {
+        // Remove the modal container
+        modalContainer.remove();
+      });
 
-      // Append the dynamic page container to the body
-      document.body.appendChild(dynamicPageContainer);
+      // Append the title, image, analyze button, and back button to the modal container
+      modalContainer.appendChild(title);
+      modalContainer.appendChild(img);
+      modalContainer.appendChild(analyzeBtn);
+      modalContainer.appendChild(backBtn);
+
+      // Append the modal container to the body
+      document.body.appendChild(modalContainer);
     });
   }
+
+
 
   
 });
