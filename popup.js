@@ -74,6 +74,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const img = document.createElement('img');
     img.src = imageData;
 
+
+    const openBtn = document.createElement('button');
+    openBtn.textContent = 'Open';
+    openBtn.className = 'open-btn';
+    openBtn.addEventListener('click', function () {
+      // Open the dynamic page within the extension window
+      openDynamicPage(index);
+    });
+
+
+    const link = document.createElement('a');
+    link.href = `dynamic_page.html?index=${index}`;
+    link.target = '_blank'; // Open in a new tab
+    link.textContent = 'Open';
+
+    // Append the link to the card
+    card.appendChild(link);
+
+
     // Create a delete button
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
@@ -89,18 +108,55 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+
     // Append the image and delete button to the card
     card.appendChild(img);
     card.appendChild(deleteBtn);
+    card.appendChild(openBtn);
 
     // Append the card to the history container
     historyContainer.appendChild(card);
   }
 
   function updateTotalScreenshotsCount() {
-    // Update the UI with the new total screenshots count
+    // Check if the element exists before updating its content
     if (totalScreenshotsCountElement) {
       totalScreenshotsCountElement.textContent = capturedScreenshots.length;
+    } else {
+      console.error("Element totalScreenshotsCountElement not found.");
     }
   }
+
+  function openDynamicPage(index) {
+    // Retrieve the captured screenshot URL from storage
+    chrome.storage.local.get(['capturedScreenshots'], function (result) {
+      const capturedScreenshots = result.capturedScreenshots || [];
+      const screenshotUrl = capturedScreenshots[index];
+
+      // Create a dynamic page container
+      const dynamicPageContainer = document.createElement('div');
+      dynamicPageContainer.className = 'dynamic-page-container';
+
+      // Create an image element for the screenshot
+      const img = document.createElement('img');
+      img.src = screenshotUrl;
+
+      // Create a button to go back
+      const backBtn = document.createElement('button');
+      backBtn.textContent = 'Back';
+      backBtn.addEventListener('click', function () {
+        // Remove the dynamic page container
+        dynamicPageContainer.remove();
+      });
+
+      // Append the image and back button to the dynamic page container
+      dynamicPageContainer.appendChild(img);
+      dynamicPageContainer.appendChild(backBtn);
+
+      // Append the dynamic page container to the body
+      document.body.appendChild(dynamicPageContainer);
+    });
+  }
+
+  
 });

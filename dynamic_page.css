@@ -1,0 +1,46 @@
+/* dynamic_page.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #47143D;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 300px;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #B99750;
+    color: #47143D;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #modalTitle {
+    margin: 0;
+  }
+  
+  #modalScreenshot {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  #closeModal {
+    color: #B99750;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  #closeModal:hover {
+    color: #FFFFFF;
+  }
+  

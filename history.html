@@ -4,14 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="popup.css">
-  <title>AI Tracker - History</title>
+  <link rel="stylesheet" href="history.css">
+  <title>History</title>
 </head>
 <body>
   <div class="container">
-    <h2>AI Tracker - History</h2>
-    <div id="historyContainer"></div>
+    <div class="navbar">
+      <h2>AI Tracker</h2>
+      <button id="viewHistoryBtn">View History</button>
+    </div>
+    <div id="historyContainer" style="display: none;"></div>
+    <button id="backBtn" style="display: none;">Back</button>
   </div>
-  <script src="history.js"></script>
+  <script src="popup.js"></script>
 </body>
 </html>

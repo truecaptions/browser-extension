@@ -1,0 +1,66 @@
+/* history.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #47143D;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 300px;
+    padding: 20px;
+  }
+  
+  h2 {
+    margin: 0;
+  }
+  
+  #historyContainer {
+    margin-top: 10px;
+  }
+  
+  .screenshot-card {
+    margin-bottom: 10px;
+    border: 1px solid #B99750;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .screenshot-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #B99750;
+    color: #47143D;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #FFFFFF;
+    color: #47143D;
+  }
+  
+  #backBtn {
+    background-color: #B99750;
+    color: #47143D;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  #backBtn:hover {
+    background-color: #FFFFFF;
+    color: #47143D;
+  }
+  
