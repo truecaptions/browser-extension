@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "AI Tracker",
+    "version": "1.0",
+    "description": "Track AI-generated content",
+    "permissions": ["storage", "activeTab"],
+    "action": {
+      "default_icon": {
+        "16": "icons.jpg",
+        "48": "icons.jpg",
+        "128": "icons.jpg"
+      },
+      "default_popup": "popup.html"
+    },
+    "icons": {
+      "16": "icons.jpg",
+      "48": "icons.jpg",
+      "128": "icons.jpg"
+    }
+  }
+  
