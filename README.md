@@ -10,20 +10,26 @@ Follow these steps to activate Truecaptions extension in your browser:
 
 - Google Chrome or any Chromium-based browser
 
-### Installation
+### Installation and Setup Project
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/ai-tracker-extension.git
+   git clone https://github.com/your-username/browser-extension.git
 
-1. Open your Chrome browser and navigate to `chrome://extensions/`.
+2. Run server.py
+   a. Install requires libraries
+   b. add API key in .env
+   ```bash
+     python server.py
 
-2. Enable "Developer mode" in the top right corner.
+3. Open your Chrome browser and navigate to `chrome://extensions/`.
 
-3. Click on "Load unpacked" and select the folder where you cloned the repository.
+4. Enable "Developer mode" in the top right corner.
 
-4. The Truecaptions extension should now appear in your extensions list.
+5. Click on "Load unpacked" and select the folder where you cloned the repository.
+
+6. The Truecaptions extension should now appear in your extensions list.
 
 ## Usage
 
@@ -42,7 +48,7 @@ We welcome contributions from the community! To contribute to the Truecaptions e
 2. Clone your fork to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/ai-tracker-extension.git
+   git clone https://github.com/your-username/browser-extension.git
 3. Create a new branch for your feature or bug fix:
    ```bash
     git checkout -b feature-or-bugfix-name
