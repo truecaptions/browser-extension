@@ -148,8 +148,9 @@ document.addEventListener('DOMContentLoaded', function () {
       analyzeBtn.className = 'analyze-btn';
       analyzeBtn.addEventListener('click', function () {
         // Analyze the screenshot using the backend server
-        analyzeScreenshot(screenshotUrl);
+        analyzeScreenshot(screenshotUrl, modalContainer);
       });
+
 
 
 
@@ -173,7 +174,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function analyzeScreenshot(screenshotUrl) {
+  function analyzeScreenshot(screenshotUrl, modalContainer) {
+    // Display loader while analysis is in progress
+    const loader = document.createElement('div');
+    loader.className = 'loader';
+    modalContainer.appendChild(loader);
+
     // Retrieve the base64 encoded image data
     fetch(screenshotUrl)
       .then(response => response.blob())
@@ -187,28 +193,73 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .then(encodedData => {
         // Send the base64 encoded image data to the backend for analysis
-        fetch('http://localhost:5000/analyze', {
+        return fetch('http://localhost:5000/analyze', {
           method: 'POST',
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ screenshotUrl: encodedData }),
-        })
-          .then(response => response.json())
-          .then(data => {
-            // Display the analysis result
-            alert('Analysis Result:\n' + JSON.stringify(data, null, 2));
-          })
-          .catch(error => {
-            console.error('Error analyzing screenshot:', error);
-            alert('Error analyzing screenshot. Please try again.');
-          });
+        });
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Remove loader
+        loader.remove();
+
+        // Display the results button
+        const resultsBtn = document.createElement('button');
+        resultsBtn.textContent = 'Results';
+        resultsBtn.className = 'results-btn';
+        resultsBtn.addEventListener('click', function () {
+          // Show the analysis results
+          showAnalysisResults(data);
+        });
+
+        modalContainer.appendChild(resultsBtn);
+      })
+      .catch(error => {
+        // Remove loader on error
+        loader.remove();
+        console.error('Error analyzing screenshot:', error);
+        alert('Error analyzing screenshot. Please try again.');
       });
   }
 
+function showAnalysisResults(data) {
+  // Display the analysis result in a more user-friendly way (e.g., a modal)
+  const resultsModal = document.createElement('div');
+  resultsModal.className = 'results-modal';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = 'Close';
+  closeBtn.className = 'close-btn';
+  closeBtn.addEventListener('click', function () {
+    // Close the results modal
+    resultsModal.remove();
+  });
+
+  const resultsText = document.createElement('pre');
+  resultsText.textContent = data.analysisResult;
+
+  resultsModal.appendChild(closeBtn);
+  resultsModal.appendChild(resultsText);
+
+  // Append the results modal to the body
+  document.body.appendChild(resultsModal);
+}
 
 
-
+  
+  function formatResponseText(text) {
+    // Split the text into lines with a maximum of 50 characters per line
+    const maxLength = 60;
+    const lines = [];
+    for (let i = 0; i < text.length; i += maxLength) {
+      lines.push(text.substring(i, i + maxLength));
+    }
+    return lines.join('\n');
+  }
+  
   
 });

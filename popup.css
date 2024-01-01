@@ -164,3 +164,88 @@ button:hover {
   background-color: #FFFFFF;
   color: #47143D;
 }
+
+/* Add this to your CSS for styling the loader */
+.loader {
+  border: 8px solid #B99750; /* Use your primary UI color here */
+  border-top: 8px solid #FFFFFF; /* Use your text color here */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add this to your CSS for styling the results modal */
+.results-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  max-width: 80%;
+  overflow: auto;
+}
+
+.close-btn {
+  background-color: #47143D; /* Use your text color here */
+  color: #FFFFFF; /* Use your background color here */
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-btn:hover {
+  background-color: #351032; /* Use a darker shade or different color for hover effect */
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 1000;
+  display: none; /* Hidden by default */
+}
+
+.results-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #B99750; /* Use your primary UI color here */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  max-width: 90%; /* Adjust the width percentage as needed */
+  overflow: auto;
+  max-height: 80%; /* Limit height and add scroll if needed */
+}
+
+.results-modal pre {
+  color: #47143D; /* Use your text color here */
+  white-space: pre-wrap; /* Preserve whitespace and wrap lines */
+  max-width: 100%; /* Adjust the width if needed */
+}
+
+.results-modal:hover {
+  background-color: #B99750; /* Use your primary UI color here */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
