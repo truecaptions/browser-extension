@@ -126,9 +126,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const capturedScreenshots = result.capturedScreenshots || [];
       const screenshotUrl = capturedScreenshots[index];
 
+
+
       // Create a modal container
       const modalContainer = document.createElement('div');
       modalContainer.className = 'modal-container';
+
 
       
       // Create a title for the modal
@@ -144,9 +147,11 @@ document.addEventListener('DOMContentLoaded', function () {
       analyzeBtn.textContent = 'Analyze';
       analyzeBtn.className = 'analyze-btn';
       analyzeBtn.addEventListener('click', function () {
-        // Implement your analyze logic here
-        alert('Analyzing...');
+        // Analyze the screenshot using the backend server
+        analyzeScreenshot(screenshotUrl);
       });
+
+
 
       // Create a "Back" button
       const backBtn = document.createElement('button');
@@ -167,6 +172,41 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.appendChild(modalContainer);
     });
   }
+
+  function analyzeScreenshot(screenshotUrl) {
+    // Retrieve the base64 encoded image data
+    fetch(screenshotUrl)
+      .then(response => response.blob())
+      .then(blob => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(blob);
+        });
+      })
+      .then(encodedData => {
+        // Send the base64 encoded image data to the backend for analysis
+        fetch('http://localhost:5000/analyze', {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ screenshotUrl: encodedData }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Display the analysis result
+            alert('Analysis Result:\n' + JSON.stringify(data, null, 2));
+          })
+          .catch(error => {
+            console.error('Error analyzing screenshot:', error);
+            alert('Error analyzing screenshot. Please try again.');
+          });
+      });
+  }
+
 
 
 
