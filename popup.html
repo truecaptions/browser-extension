@@ -17,7 +17,11 @@
         <p>Screenshots captured: <span id="totalScreenshotsCount">0</span></p>
       </div>
     </div>
-    <button id="startBtn">Start Tracking</button>
+    <div class="button-container">
+      <button id="startBtn">Start Tracking</button>
+      <button id="uploadBtn">Upload Screenshot</button>
+    </div>
+    <input type="file" id="uploadInput" accept="image/*" style="display: none;">
     <div id="historyContainer" style="display: none;"></div>
     <button id="backBtn" style="display: none;">Back</button>
   </div>

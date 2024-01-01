@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const totalScreenshotsCountElement = document.getElementById('totalScreenshotsCount');
   const backBtn = document.getElementById('backBtn');
 
+  const uploadBtn = document.getElementById('uploadBtn');
+  const uploadInput = document.getElementById('uploadInput');
+
   let capturedScreenshots = [];
 
   // Load the previous data from storage
@@ -23,6 +26,39 @@ document.addEventListener('DOMContentLoaded', function () {
     // Show the history of captured screenshots
     showHistory();
   });
+
+  uploadBtn.addEventListener('click', function () {
+    // Trigger the file input click
+    uploadInput.click();
+  });
+
+  uploadInput.addEventListener('change', function () {
+    // Handle the selected file
+    const file = uploadInput.files[0];
+
+    if (file) {
+      // Read the selected image file as data URL
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const imageData = e.target.result;
+
+        // Store the uploaded screenshot in history
+        storeScreenshotInCard(imageData, 'aspect-ratio', capturedScreenshots.length);
+        capturedScreenshots.push(imageData);
+
+        // Save the updated data to storage
+        chrome.storage.local.set({
+          'capturedScreenshots': capturedScreenshots
+        });
+
+        // Update the total screenshots count
+        updateTotalScreenshotsCount();
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+
 
   backBtn.addEventListener('click', function () {
     // Show the main view and hide history
