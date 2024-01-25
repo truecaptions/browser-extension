@@ -8,7 +8,7 @@ import base64
 app = Flask(__name__)
 CORS(app) 
 
-genai.configure(api_key="AIzaSyDD08zTS8_TjmUqX5UuYK4-mPSKJJmN8xk")
+genai.configure(api_key="API_KEY")
 
 generation_config = {
     "temperature": 0.4,
